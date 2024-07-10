@@ -104,16 +104,22 @@
         width: 100%;
         height: 100%;
 
-        padding-left: 2em;
-        padding-right: 2em;
+        margin-left: 2em;
+        margin-right: 2em;
+
+        background-clip: border-box;
       }
 
       .nav-word {
         padding-left: 0.5em;
       }
 
+      .nav-link.active {
+        border-bottom: 2px solid white;
+      }
+
       .nav-link:hover {
-        border-bottom: 1px solid white;
+        border-bottom: 2px solid #9da2ad;
       }
 
       .nav-number {
@@ -223,7 +229,7 @@
           width: 100%;
           align-items: center;
 
-          padding-bottom: 2em;
+          /* padding-bottom: 2em; */
         }
 
         .paragraph {
@@ -254,10 +260,7 @@
 
           margin-top: calc(var(--nav-list-height) + 2em);
 
-          /* display: flex;
-          flex-flow: row wrap; */
-          /* justify-content: center; */
-          /* align-items: space-between; */
+          height: fit-content;
         }
 
         .words {
@@ -276,9 +279,16 @@
           font-size: 5em;
         }
 
+        .paragraph {
+          padding-left: 1em;
+          padding-right: 1em;
+        }
+
         .explore {
           padding: 3em 1.5em;
           font-size: 1.2em;
+
+          /* margin-bottom: 4em; */
         }
       }
     </style>
@@ -289,7 +299,7 @@
 
       <!-- <canvas id="nav-line"></canvas> -->
       <div class="nav-list">
-        <a href="#" class="nav-link">
+        <a href="#" class="nav-link active">
           <span class="nav-number">00</span>
           <span class="nav-word">Home</span>
         </a>
