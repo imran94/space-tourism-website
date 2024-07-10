@@ -38,6 +38,10 @@
           url("assets/fonts/spaceship.ttf") format("truetype");
       }
 
+      :root {
+        --nav-list-height: 6em;
+      }
+
       html {
         height: 100%;
         margin: 0;
@@ -92,7 +96,7 @@
 
         padding-right: 4rem;
         padding-left: 30rem;
-        height: 6em;
+        height: var(--nav-list-height);
         text-transform: uppercase;
       }
 
@@ -202,6 +206,31 @@
           padding-right: 1em;
         }
 
+        .main {
+          /* position: relative; */
+          bottom: 10em;
+
+          left: 2em;
+          right: 2em;
+
+          /* display: flex;
+          flex-flow: row wrap; */
+          justify-content: center;
+          /* align-items: space-between; */
+        }
+
+        .words {
+          width: 100%;
+          align-items: center;
+
+          padding-bottom: 2em;
+        }
+
+        .paragraph {
+          padding-left: 4em;
+          padding-right: 4em;
+        }
+
         /* .nav-word {
           padding-left: 0em
         } */
@@ -221,16 +250,14 @@
         }
 
         .main {
-          /* position: relative; */
-          bottom: 10em;
+          position: static;
 
-          left: 2em;
-          right: 2em;
+          margin-top: calc(var(--nav-list-height) + 2em);
 
           /* display: flex;
           flex-flow: row wrap; */
-          justify-content: center;
-          align-items: space-between;
+          /* justify-content: center; */
+          /* align-items: space-between; */
         }
 
         .words {
@@ -238,6 +265,7 @@
           align-items: center;
 
           padding-bottom: 12em;
+          row-gap: 0.5em;
         }
 
         .intro {
