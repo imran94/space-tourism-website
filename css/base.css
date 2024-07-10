@@ -1,0 +1,166 @@
+@font-face {
+  font-family: "Gravidaz";
+  src: local("Gravidaz"), url("assets/fonts/gravidaz.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Earth Orbiter";
+  src: local("Earth Orbiter"),
+    url("assets/fonts/earth-orbiter.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "SkyGraze";
+  src: local("SkyGraze"), url("assets/fonts/skygraze.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Spaceship";
+  src: local("Spaceship"), url("assets/fonts/spaceship.ttf") format("truetype");
+}
+
+:root {
+  /* Colors */
+  --light-blue-grey: #d0d6f9;
+  --charcoal-grey: #4d4f57;
+
+  /* Numerical values */
+  --nav-list-height: 6em;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+
+  font-family: "Tahoma", sans-serif;
+
+  color: white;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-origin: center;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav,
+.nav-list,
+.nav-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  list-style: none;
+
+  /* font-family: andale mono, monospace; */
+  font-family: "Lucia Grande", sans-serif;
+  font-size: 1.05em;
+  color: white;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  padding-right: 20em;
+  margin-top: 3.5em;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.logo {
+  padding-left: 5em;
+}
+
+.nav-list {
+  background: hsl(0 0% 100% / 0.1);
+  backdrop-filter: blur(1rem);
+
+  padding-right: 4rem;
+  padding-left: 10rem;
+  height: var(--nav-list-height);
+  text-transform: uppercase;
+}
+
+.nav-link {
+  width: 100%;
+  height: 100%;
+
+  margin-left: 2em;
+  margin-right: 2em;
+
+  background-clip: border-box;
+}
+
+.nav-word {
+  padding-left: 0.5em;
+}
+
+.nav-link.active {
+  border-bottom: 2px solid white;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid #9da2ad;
+}
+
+.nav-number {
+  font-weight: 700;
+}
+
+.page-title {
+  font-size: 2em;
+  text-transform: uppercase;
+
+  align-self: flex-start;
+}
+
+@media screen and (max-width: 1024px) {
+  .logo {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  nav {
+    padding-left: 0;
+    margin-top: 0;
+  }
+
+  .nav-list {
+    /* row-gap: 2rem; */
+
+    padding-right: 1em;
+    padding-left: 0.5em;
+  }
+
+  .nav-link {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .page-title {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  nav {
+    margin-top: 1em;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+  .page-title {
+    font-size: 1em;
+    align-self: auto;
+  }
+}
