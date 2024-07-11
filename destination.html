@@ -14,8 +14,87 @@
     <link rel="stylesheet" href="css/destination.css" />
 
     <title>Frontend Mentor | Space tourism website</title>
+
+    <script type="module">
+      import { createApp } from "https://unpkg.com/petite-vue?module";
+      // import data from "../data.json";
+
+      function Content() {
+        return {
+          destination: {
+            name: "Moon",
+            images: {
+              png: "./assets/destination/image-moon.png",
+              webp: "./assets/destination/image-moon.webp",
+            },
+            description:
+              "See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",
+            distance: "384,400 km",
+            travel: "3 days",
+          },
+          data: [
+            {
+              name: "Moon",
+              images: {
+                png: "./assets/destination/image-moon.png",
+                webp: "./assets/destination/image-moon.webp",
+              },
+              description:
+                "See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",
+              distance: "384,400 km",
+              travel: "3 days",
+            },
+            {
+              name: "Mars",
+              images: {
+                png: "./assets/destination/image-mars.png",
+                webp: "./assets/destination/image-mars.webp",
+              },
+              description:
+                "Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!",
+              distance: "225 mil. km",
+              travel: "9 months",
+            },
+            {
+              name: "Europa",
+              images: {
+                png: "./assets/destination/image-europa.png",
+                webp: "./assets/destination/image-europa.webp",
+              },
+              description:
+                "The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.",
+              distance: "628 mil. km",
+              travel: "3 years",
+            },
+            {
+              name: "Titan",
+              images: {
+                png: "./assets/destination/image-titan.png",
+                webp: "./assets/destination/image-titan.webp",
+              },
+              description:
+                "The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.",
+              distance: "1.6 bil. km",
+              travel: "7 years",
+            },
+          ],
+          fetchData() {
+            fetch("../data.json")
+              .then((res) => res.json())
+              .then((json) => console.log(json));
+          },
+          mounted() {
+            this.destination = this.data[0];
+
+            // console.log(data);
+          },
+        };
+      }
+
+      createApp({ Content }).mount();
+    </script>
   </head>
-  <body>
+  <body v-scope="Content()" @vue:mounted="mounted">
     <nav class="nav">
       <a href="index.html" class="logo"><img src="assets/shared/logo.svg" /></a>
 
@@ -46,30 +125,30 @@
       </div>
 
       <div class="content">
-        <img src="assets/destination/image-moon.png" class="dest-image" />
+        <img :src="destination.images.png" class="dest-image" />
         <div class="dest-info">
           <div class="dest-nav">
-            <a class="dest-nav-item active">Moon</a>
-            <a class="dest-nav-item">Mars</a>
-            <a class="dest-nav-item">Europa</a>
-            <a class="dest-nav-item">Titan</a>
+            <div
+              v-for="dest in data"
+              :key="dest.name"
+              class="dest-nav-item"
+              :class="{'active': destination === dest}"
+              @click="destination = dest"
+            >
+              {{dest.name}}
+            </div>
           </div>
-          <div class="dest-title">Moon</div>
-          <div class="dest-desc">
-            See our planet as you’ve never seen it before. A perfect relaxing
-            trip away to help regain perspective and come back refreshed. While
-            you’re there, take in some history by visiting the Luna 2 and Apollo
-            11 landing sites.
-          </div>
+          <div class="dest-title">{{destination.name}}</div>
+          <div class="dest-desc">{{destination.description}}</div>
           <hr />
           <div class="dest-stats">
             <div class="dest-stat">
               <div class="dest-stats-label">avg. distance</div>
-              <div class="dest-stats-value">384,400 km</div>
+              <div class="dest-stats-value">{{destination.distance}}</div>
             </div>
             <div class="dest-stat">
               <div class="dest-stats-label">est. travel time</div>
-              <div class="dest-stats-value">3 days</div>
+              <div class="dest-stats-value">{{destination.travel}}</div>
             </div>
           </div>
         </div>

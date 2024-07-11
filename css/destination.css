@@ -1,39 +1,40 @@
 html {
   background-image: url(../assets/destination/background-destination-desktop.jpg);
-  /* background-attachment: local; */
+  background-repeat: repeat-y;
 }
 
 .main {
+  background: transparent;
   margin-top: calc(var(--nav-list-height) + 2em);
 
-  padding: 6em 10em;
+  padding-top: 4em;
+  padding-left: 10em;
   height: max-content;
 
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   row-gap: 3em;
 }
 
 .content {
   padding-top: 7em;
-  padding-bottom: 7em;
+  /* padding-bottom: 7em; */
 
   color: var(--light-blue-grey);
 
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
-}
-
-.content > * {
-  padding-left: 3em;
-  padding-right: 3em;
+  /* justify-content: center; */
+  /* align-items: center; */
+  column-gap: 10em;
+  row-gap: 5em;
 }
 
 .dest-image {
   width: 480px;
   height: 480px;
+  /* padding-right: 3em; */
 }
 
 .dest-info {
@@ -104,7 +105,6 @@ hr {
 @media screen and (max-width: 1024px) {
   html {
     background-image: url(../assets/destination/background-destination-tablet.jpg);
-    background-repeat: repeat-y;
     text-align: center;
   }
 
@@ -127,6 +127,7 @@ hr {
     justify-content: center;
     padding-top: 1em;
     padding-bottom: 0;
+    row-gap: 0;
   }
 
   .dest-image {
