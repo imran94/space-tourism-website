@@ -67,7 +67,8 @@ nav {
   top: 0;
   width: 100%;
 
-  padding-right: 20em;
+  /* padding-right: 20em; */
+  padding-left: 5em;
   margin-top: 3.5em;
 }
 
@@ -76,14 +77,14 @@ nav {
 }
 
 .logo {
-  padding-left: 5em;
+  /* padding-left: 5em; */
 }
 
 .nav-list {
   background: hsl(0 0% 100% / 0.1);
   backdrop-filter: blur(1rem);
 
-  padding-right: 4rem;
+  padding-right: 8em;
   padding-left: 10rem;
   height: var(--nav-list-height);
   text-transform: uppercase;
@@ -113,6 +114,11 @@ nav {
 
 .nav-number {
   font-weight: 700;
+}
+
+.nav-toggle {
+  display: none;
+  padding-right: 2em;
 }
 
 .page-title {
@@ -157,6 +163,10 @@ nav {
 
   .nav-list {
     display: none;
+  }
+
+  .nav-toggle {
+    display: block;
   }
 
   .page-title {

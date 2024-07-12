@@ -106,16 +106,17 @@ html {
 
   .promo {
     position: static;
-    margin-top: calc(var(--nav-list-height) + 2em);
-    height: fit-content;
+    margin-top: var(--nav-list-height);
+    height: 100%;
+    align-items: space-between;
   }
 
   .words {
     width: 100%;
     align-items: center;
 
-    padding-bottom: 12em;
-    row-gap: 0.5em;
+    /* padding-bottom: 12em;
+    row-gap: 0.5em; */
   }
 
   .intro {
@@ -134,5 +135,6 @@ html {
   .explore {
     padding: 3.25em 1.5em;
     font-size: 1.2em;
+    /* margin-bottom: 20em; */
   }
 }
