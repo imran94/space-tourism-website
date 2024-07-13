@@ -21,16 +21,16 @@
 
       function Content() {
         return {
+          isLoaded: false,
           destination: {
-            name: "Moon",
+            name: "",
             images: {
-              png: "./assets/destination/image-moon.png",
-              webp: "./assets/destination/image-moon.webp",
+              png: "",
+              webp: "",
             },
-            description:
-              "See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",
-            distance: "384,400 km",
-            travel: "3 days",
+            description: "",
+            distance: "",
+            travel: "",
           },
           data: [
             {
@@ -78,13 +78,9 @@
               travel: "7 years",
             },
           ],
-          fetchData() {
-            fetch("../data.json")
-              .then((res) => res.json())
-              .then((json) => console.log(json));
-          },
           mounted() {
             this.destination = this.data[0];
+            this.isLoaded = true;
 
             // console.log(data);
           },
@@ -97,8 +93,13 @@
   <body v-scope="Content()" @vue:mounted="mounted">
     <nav class="nav">
       <a href="index.html" class="logo"><img src="assets/shared/logo.svg" /></a>
+      <div id="nav-list" class="nav-list">
+        <img
+          src="assets/shared/icon-close.svg"
+          class="nav-close-button clickable"
+          onclick="toggleNavBar()"
+        />
 
-      <div class="nav-list">
         <a href="index.html" class="nav-link">
           <span class="nav-number">00</span>
           <span class="nav-word">Home</span>
@@ -107,27 +108,33 @@
           <span class="nav-number">01</span>
           <span class="nav-word">Destination</span>
         </a>
-        <a href="#" class="nav-link">
+        <a href="crew.html" class="nav-link">
           <span class="nav-number">02</span>
           <span class="nav-word">Crew</span>
         </a>
-        <a href="#" class="nav-link">
+        <a href="technology.html" class="nav-link">
           <span class="nav-number">03</span>
           <span class="nav-word">Technology</span>
         </a>
       </div>
+
+      <img
+        src="assets/shared/icon-hamburger.svg"
+        class="nav-toggle clickable"
+        onclick="toggleNavBar()"
+      />
     </nav>
 
     <div class="main">
-      <div class="page-title">
+      <div class="page-title heading-xs">
         <span class="page-number">01</span>
         <span class="page-name">Pick your destination</span>
       </div>
 
-      <div class="content">
+      <div class="content" :class="{ 'content-visible': isLoaded }">
         <img :src="destination.images.png" class="dest-image" />
         <div class="dest-info">
-          <div class="dest-nav">
+          <div class="dest-nav nav-text">
             <div
               v-for="dest in data"
               :key="dest.name"
@@ -138,17 +145,21 @@
               {{dest.name}}
             </div>
           </div>
-          <div class="dest-title">{{destination.name}}</div>
+          <div class="dest-title heading-l">{{destination.name}}</div>
           <div class="dest-desc">{{destination.description}}</div>
           <hr />
           <div class="dest-stats">
             <div class="dest-stat">
-              <div class="dest-stats-label">avg. distance</div>
-              <div class="dest-stats-value">{{destination.distance}}</div>
+              <div class="dest-stats-label subheading-s">avg. distance</div>
+              <div class="dest-stats-value subheading-l">
+                {{destination.distance}}
+              </div>
             </div>
             <div class="dest-stat">
-              <div class="dest-stats-label">est. travel time</div>
-              <div class="dest-stats-value">{{destination.travel}}</div>
+              <div class="dest-stats-label subheading-s">est. travel time</div>
+              <div class="dest-stats-value subheading-l">
+                {{destination.travel}}
+              </div>
             </div>
           </div>
         </div>
@@ -161,4 +172,5 @@
     history by visiting the Luna 2 and Apollo 11 landing sites. Avg. distance
     384,400 km Est. travel time 3 days -->
   </body>
+  <script src="js/nav.js"></script>
 </html>

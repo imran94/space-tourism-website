@@ -18,9 +18,13 @@
   <body>
     <nav class="nav">
       <a href="index.html" class="logo"><img src="assets/shared/logo.svg" /></a>
+      <div id="nav-list" class="nav-list">
+        <img
+          src="assets/shared/icon-close.svg"
+          class="nav-close-button clickable"
+          onclick="toggleNavBar()"
+        />
 
-      <!-- <canvas id="nav-line"></canvas> -->
-      <div class="nav-list">
         <a href="index.html" class="nav-link active">
           <span class="nav-number">00</span>
           <span class="nav-word">Home</span>
@@ -39,13 +43,17 @@
         </a>
       </div>
 
-      <img src="assets/shared/icon-hamburger.svg" class="nav-toggle" />
+      <img
+        src="assets/shared/icon-hamburger.svg"
+        class="nav-toggle clickable"
+        onclick="toggleNavBar()"
+      />
     </nav>
 
     <div class="promo">
       <div class="words">
-        <div class="intro">So, you want to travel to</div>
-        <div class="spaaace">Space</div>
+        <div class="intro heading-xs">So, you want to travel to</div>
+        <div class="heading-xl spaaace">Space</div>
         <div class="paragraph">
           Let’s face it; if you want to go to space, you might as well genuinely
           go to outer space and not hover kind of on the edge of it. Well sit
@@ -53,9 +61,9 @@
           experience!
         </div>
       </div>
-      <div class="explore">Explore</div>
+      <div class="heading-s explore">Explore</div>
     </div>
   </body>
 
-  <script></script>
+  <script src="js/nav.js"></script>
 </html>

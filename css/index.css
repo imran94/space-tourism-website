@@ -5,7 +5,7 @@ html {
 .promo {
   position: fixed;
   /* inset: 0; */
-  bottom: 10em;
+  bottom: 5em;
 
   left: 10em;
   right: 10em;
@@ -23,7 +23,6 @@ html {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  row-gap: 1.5em;
 
   text-align: center;
 }
@@ -36,21 +35,7 @@ html {
 
 .intro,
 .paragraph {
-  color: var(--light-blue-grey);
-}
-
-.intro {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 2em;
-}
-
-.spaaace,
-.explore {
-  font-family: "Georgia", serif;
-}
-
-.spaaace {
-  font-size: 10em;
+  color: var(--light-blue);
 }
 
 .explore {
@@ -58,12 +43,6 @@ html {
   border-radius: 50%;
   padding: 4em 2em;
   color: black;
-
-  font-size: 2.5em;
-}
-
-.paragraph {
-  line-height: 150%;
 }
 
 @media screen and (max-width: 1024px) {
@@ -89,8 +68,6 @@ html {
   .explore {
     margin-top: 1em;
     padding: 4em 2em;
-
-    font-size: 2em;
   }
 
   .paragraph {
@@ -107,26 +84,18 @@ html {
   .promo {
     position: static;
     margin-top: var(--nav-list-height);
-    /* height: 100%; */
     align-items: space-between;
-    row-gap: 8em;
+    row-gap: 1em;
   }
 
   .words {
     width: 100%;
     align-items: center;
-
-    /* padding-bottom: 12em;
-    row-gap: 0.5em; */
   }
 
-  .intro {
+  /* .intro {
     font-size: 1em;
-  }
-
-  .spaaace {
-    font-size: 5em;
-  }
+  } */
 
   .paragraph {
     padding-left: 1em;
@@ -135,7 +104,7 @@ html {
 
   .explore {
     padding: 3.25em 1.5em;
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
     /* margin-bottom: 20em; */
   }
 }

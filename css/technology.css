@@ -1,0 +1,16 @@
+html {
+  background-image: url(../assets/technology/background-technology-desktop.jpg);
+  background-repeat: repeat-y;
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    background-image: url(../assets/technology/background-technology-tablet.jpg);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    background-image: url(../assets/technology/background-technology-mobile.jpg);
+  }
+}
