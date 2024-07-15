@@ -14,8 +14,79 @@
     <link rel="stylesheet" href="css/technology.css" />
 
     <title>Frontend Mentor | Space tourism website</title>
+
+    <script type="module">
+      import { createApp } from "https://unpkg.com/petite-vue?module";
+
+      function Content() {
+        return {
+          isLoaded: false,
+          image: "",
+          selectedTech: {
+            name: "",
+            images: {
+              portrait: "",
+              landscape: "",
+            },
+            description: "",
+          },
+          data: [
+            {
+              name: "Launch vehicle",
+              images: {
+                portrait:
+                  "./assets/technology/image-launch-vehicle-portrait.jpg",
+                landscape:
+                  "./assets/technology/image-launch-vehicle-landscape.jpg",
+              },
+              description:
+                "A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch pad!",
+            },
+            {
+              name: "Spaceport",
+              images: {
+                portrait: "./assets/technology/image-spaceport-portrait.jpg",
+                landscape: "./assets/technology/image-spaceport-landscape.jpg",
+              },
+              description:
+                "A spaceport or cosmodrome is a site for launching (or receiving) spacecraft, by analogy to the seaport for ships or airport for aircraft. Based in the famous Cape Canaveral, our spaceport is ideally situated to take advantage of the Earth’s rotation for launch.",
+            },
+            {
+              name: "Space capsule",
+              images: {
+                portrait:
+                  "./assets/technology/image-space-capsule-portrait.jpg",
+                landscape:
+                  "./assets/technology/image-space-capsule-landscape.jpg",
+              },
+              description:
+                "A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained.",
+            },
+          ],
+          setTech(tech) {
+            this.selectedTech = tech;
+            this.assignCorrectImage();
+          },
+          assignCorrectImage(event) {
+            this.image =
+              window.innerWidth > 1024
+                ? this.selectedTech.images.portrait
+                : this.selectedTech.images.landscape;
+            console.log("assignCorrectImage");
+          },
+          mounted() {
+            this.selectedTech = this.data[0];
+            this.assignCorrectImage();
+            this.isLoaded = true;
+
+            addEventListener("resize", this.assignCorrectImage);
+          },
+        };
+      }
+      createApp({ Content }).mount();
+    </script>
   </head>
-  <body>
+  <body v-scope="Content()" @vue:mounted="mounted">
     <nav class="nav">
       <a href="index.html" class="logo"><img src="assets/shared/logo.svg" /></a>
       <div id="nav-list" class="nav-list">
@@ -50,12 +121,34 @@
       />
     </nav>
 
-    00 Home 01 Destination 02 Crew 03 Technology 03 Space launch 101 1 2 3 The
-    terminology... Launch vehicle A launch vehicle or carrier rocket is a
-    rocket-propelled vehicle used to carry a payload from Earth's surface to
-    space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the
-    most powerful in operation. Standing 150 metres tall, it's quite an
-    awe-inspiring sight on the launch pad!
+    <div class="main">
+      <div class="page-title heading-xs">
+        <span class="page-number">03</span>
+        <span class="page-name">Space Launch 101</span>
+      </div>
+
+      <div class="content" :class="{'content-visible': isLoaded}">
+        <div class="tech-half">
+          <div class="tech-selection-menu">
+            <div
+              v-for="(tech, index) in data"
+              class="tech-selector clickable heading-s"
+              :class="{'tech-selected': selectedTech === tech}"
+              :key="index"
+              @click="setTech(tech)"
+            >
+              {{ index + 1 }}
+            </div>
+          </div>
+          <div class="tech-info">
+            <div class="terminology heading-s">The Terminology...</div>
+            <div class="tech-name heading-m">{{ selectedTech.name }}</div>
+            <div class="tech-desc">{{ selectedTech.description }}</div>
+          </div>
+        </div>
+        <img class="tech-image" :src="image" />
+      </div>
+    </div>
   </body>
   <script src="js/nav.js"></script>
 </html>

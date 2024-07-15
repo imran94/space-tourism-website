@@ -30,7 +30,8 @@ html {
   padding: 1em 0.5em;
   cursor: pointer;
 }
-.dest-nav-item:hover {
+.dest-nav-item:hover,
+.dest-nav-item:focus {
   border-bottom: 2px solid #9da2ad;
 }
 .dest-nav-item.active {

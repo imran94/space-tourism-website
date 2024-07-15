@@ -2,30 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
-@font-face {
-  font-family: "Gravidaz";
-  src: local("Gravidaz"), url("assets/fonts/gravidaz.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Earth Orbiter";
-  src: local("Earth Orbiter"),
-    url("assets/fonts/earth-orbiter.otf") format("truetype");
-}
-
-@font-face {
-  font-family: "SkyGraze";
-  src: local("SkyGraze"), url("assets/fonts/skygraze.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Spaceship";
-  src: local("Spaceship"), url("assets/fonts/spaceship.ttf") format("truetype");
-}
-
 :root {
   /* Colors */
   --light-blue: #d0d6f9;
+  --medium-grey: #8e8f93;
   --charcoal-grey: #505259;
   --very-dark-navy: #0b0d17;
 
@@ -33,6 +13,15 @@
   --nav-list-height: 6em;
 
   --mobile-nav-width: 60%;
+
+  /* Font sizes */
+  --heading-xl-font-size: 144px;
+  --heading-l-font-size: 100px;
+  --heading-m-font-size: 56px;
+  --heading-s-font-size: 32px;
+  --heading-xs-font-size: 28px;
+  --subheading-l-font-size: 28px;
+  --subheading-s-font-size: 14px;
 }
 
 .heading-xl,
@@ -47,22 +36,22 @@
 }
 
 .heading-xl {
-  font-size: 144px;
+  font-size: var(--heading-xl-font-size);
   line-height: 171.9%;
 }
 
 .heading-l {
-  font-size: 100px;
+  font-size: var(--heading-l-font-size);
   line-height: 114.6%;
 }
 
 .heading-m {
-  font-size: 56px;
+  font-size: var(--heading-m-font-size);
   line-height: 64.2%;
 }
 
 .heading-s {
-  font-size: 32px;
+  font-size: var(--heading-s-font-size);
   line-height: 36.7%;
 }
 
@@ -74,17 +63,17 @@
 }
 
 .heading-xs {
-  font-size: 28px;
+  font-size: var(--heading-xs-font-size);
   line-height: 33.6%;
 }
 
 .subheading-l {
-  font-size: 28px;
+  font-size: var(--subheading-l-font-size);
   line-height: 32.1%;
 }
 
 .subheading-s {
-  font-size: 14px;
+  font-size: var(--subheading-s-font-size);
   line-height: 16.8%;
 }
 
@@ -101,7 +90,7 @@ html {
 
   background-repeat: no-repeat;
   background-position: center;
-  background-origin: center;
+  background-origin: border-box;
   background-size: cover;
 }
 
@@ -147,6 +136,7 @@ nav {
 .nav-list {
   background: hsl(0 0% 100% / 0.1);
   backdrop-filter: blur(1rem);
+  justify-content: flex-end;
 
   height: var(--nav-list-height);
   text-transform: uppercase;
@@ -233,19 +223,33 @@ nav {
   }
 
   .nav-link {
-    width: 100%;
+    width: fit-content;
   }
 
   .nav-link.active {
     border-bottom: 2px solid white;
   }
 
-  .nav-link:hover {
+  .nav-link:hover,
+  .nav-link:focus {
     border-bottom: 2px solid #9da2ad;
   }
 }
 
 @media screen and (max-width: 1024px) {
+  .heading-xl {
+    font-size: calc(var(--heading-xl-font-size) * 2 / 3);
+  }
+
+  .heading-l {
+    font-size: calc(var(--heading-l-font-size) * 4 / 5);
+    text-align: center;
+  }
+
+  .heading-m {
+    font-size: calc(var(--heading-m-font-size) - 10px);
+  }
+
   .logo {
     padding-left: 1em;
     padding-right: 1em;
@@ -254,10 +258,12 @@ nav {
   nav {
     padding-left: 0;
     margin-top: 0;
+    /* column-gap: 2em; */
   }
 
   .nav-list {
     /* row-gap: 2rem; */
+    width: 100%;
 
     padding-right: 1em;
     padding-left: 0.5em;
@@ -269,7 +275,7 @@ nav {
   }
 
   .main {
-    margin-top: calc(var(--nav-list-height) + 2em);
+    margin-top: var(--nav-list-height);
     row-gap: 0;
     padding: 2em;
     align-items: center;
@@ -281,28 +287,21 @@ nav {
 }
 
 @media screen and (max-width: 500px) {
-  .heading-xl {
-    font-size: calc(144px * 2 / 3);
-    line-height: 171.9%;
-  }
-
-  .heading-l {
-    font-size: calc(100px * 4 / 5);
-    text-align: center;
-  }
-
   .heading-m {
-    font-size: 56px;
-    line-height: 64.2%;
+    font-size: calc(var(--heading-m-font-size) / 2);
   }
 
   .heading-s {
-    font-size: 32px;
-    line-height: 36.7%;
+    font-size: calc(var(--heading-s-font-size) - 10px);
+  }
+
+  .crew-info {
+    row-gap: 0;
   }
 
   nav {
     margin-top: 1em;
+    /* column-gap: 0; */
   }
 
   .nav-close-button {
@@ -349,7 +348,8 @@ nav {
     border-right: 2px solid white;
   }
 
-  .nav-link:hover {
+  .nav-link:hover,
+  .nav-link:focus {
     border-right: 2px solid #9da2ad;
   }
 
