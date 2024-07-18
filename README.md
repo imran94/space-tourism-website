@@ -10,9 +10,6 @@ This is a solution to the [Space tourism website challenge on Frontend Mentor](h
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -32,7 +29,7 @@ Users should be able to:
 
 ### Links
 
-- [Live Site URL](https://your-live-site-url.com)
+- [Live Site URL](https://imran94.github.io/space-tourism-website)
 
 ## My Process
 
@@ -40,6 +37,7 @@ Users should be able to:
 
 - Semantic HTML5 markup
 - CSS custom properties
+- CSS Animations
 - Flexbox
 - [Petite Vue](https://github.com/vuejs/petite-vue) - A lightweight alternative to VueJS
 

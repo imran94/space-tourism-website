@@ -21,6 +21,7 @@
       function Content() {
         return {
           isLoaded: false,
+          isVisible: true,
           image: "",
           selectedTech: {
             name: "",
@@ -64,8 +65,16 @@
             },
           ],
           setTech(tech) {
+            if (this.selectedTech === tech) return;
+
+            this.isVisible = false;
+
             this.selectedTech = tech;
             this.assignCorrectImage();
+
+            setTimeout(() => {
+              this.isVisible = true;
+            }, 50);
           },
           assignCorrectImage(event) {
             this.image =
@@ -128,7 +137,7 @@
       </div>
 
       <div class="content" :class="{'content-visible': isLoaded}">
-        <div class="tech-half">
+        <div class="tech-half animate-info">
           <div class="tech-selection-menu">
             <div
               v-for="(tech, index) in data"
@@ -140,13 +149,26 @@
               {{ index + 1 }}
             </div>
           </div>
-          <div class="tech-info">
+          <div
+            class="tech-info"
+            :class="{ 
+              'animate-info': isVisible, 
+              'invisible': !isVisible 
+            }"
+          >
             <div class="terminology heading-s">The Terminology...</div>
             <div class="tech-name heading-m">{{ selectedTech.name }}</div>
             <div class="tech-desc">{{ selectedTech.description }}</div>
           </div>
         </div>
-        <img class="tech-image" :src="image" />
+        <img
+          class="tech-image"
+          :class="{ 
+            'animate-image': isVisible, 
+            'invisible': !isVisible 
+          }"
+          :src="image"
+        />
       </div>
     </div>
   </body>

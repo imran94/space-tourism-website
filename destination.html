@@ -22,6 +22,7 @@
       function Content() {
         return {
           isLoaded: false,
+          isVisible: true,
           destination: {
             name: "",
             images: {
@@ -81,8 +82,16 @@
           mounted() {
             this.destination = this.data[0];
             this.isLoaded = true;
+          },
+          setDestination(dest) {
+            if (dest === this.destination) return;
 
-            // console.log(data);
+            this.isVisible = false;
+            this.destination = dest;
+
+            setTimeout(() => {
+              this.isVisible = true;
+            }, 50);
           },
         };
       }
@@ -132,45 +141,71 @@
       </div>
 
       <div class="content" :class="{ 'content-visible': isLoaded }">
-        <img :src="destination.images.png" class="dest-image" />
+        <img
+          :src="destination.images.png"
+          class="dest-image"
+          :class="{ 'animate-image': isVisible, 'invisible': !isVisible }"
+        />
         <div class="dest-info">
-          <div class="dest-nav nav-text">
+          <div class="dest-nav nav-text animate-info">
             <div
               v-for="dest in data"
               :key="dest.name"
               class="dest-nav-item"
-              :class="{'active': destination === dest}"
-              @click="destination = dest"
+              :class="{ 'active': destination === dest }"
+              @click="setDestination(dest)"
             >
-              {{dest.name}}
+              {{ dest.name }}
             </div>
           </div>
-          <div class="dest-title heading-l">{{destination.name}}</div>
-          <div class="dest-desc">{{destination.description}}</div>
-          <hr />
-          <div class="dest-stats">
+          <div
+            class="dest-title heading-l"
+            :class="{ 
+              'animate-info': isVisible, 
+              'invisible': !isVisible 
+            }"
+          >
+            {{ destination.name }}
+          </div>
+          <div
+            class="dest-desc"
+            :class="{ 
+              'animate-info': isVisible, 
+              'invisible': !isVisible 
+            }"
+          >
+            {{ destination.description }}
+          </div>
+          <hr
+            class="divider"
+            :class="{ 
+              'animate-info': isVisible, 
+              'invisible': !isVisible 
+            }"
+          />
+          <div
+            class="dest-stats"
+            :class="{ 
+              'animate-info': isVisible, 
+              'invisible': !isVisible 
+            }"
+          >
             <div class="dest-stat">
               <div class="dest-stats-label subheading-s">avg. distance</div>
               <div class="dest-stats-value subheading-l">
-                {{destination.distance}}
+                {{ destination.distance }}
               </div>
             </div>
             <div class="dest-stat">
               <div class="dest-stats-label subheading-s">est. travel time</div>
               <div class="dest-stats-value subheading-l">
-                {{destination.travel}}
+                {{ destination.travel }}
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- 01 Pick your destination Moon Mars Europa Titan Moon See our planet as
-    you’ve never seen it before. A perfect relaxing trip away to help regain
-    perspective and come back refreshed. While you’re there, take in some
-    history by visiting the Luna 2 and Apollo 11 landing sites. Avg. distance
-    384,400 km Est. travel time 3 days -->
   </body>
   <script src="js/nav.js"></script>
 </html>

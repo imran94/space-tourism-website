@@ -24,7 +24,8 @@ html {
   align-items: flex-start;
   justify-content: center;
 
-  text-align: center;
+  animation-name: fadeIn, slideRight;
+  animation-duration: var(--anim-duration);
 }
 
 .intro,
@@ -43,11 +44,27 @@ html {
   border-radius: 50%;
   padding: 4em 2em;
   color: black;
+  transition: box-shadow 1s;
+
+  animation-name: fadeIn, slideLeft;
+  animation-duration: var(--anim-duration);
 }
 
 .explore:hover,
 .explore:focus {
   box-shadow: 0 0 0 80px rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (min-width: 1024px) {
+  .words {
+    animation-name: fadeIn, slideRight;
+    animation-duration: var(--anim-duration);
+  }
+
+  .explore {
+    animation-name: fadeIn, slideLeft;
+    animation-duration: var(--anim-duration);
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -68,6 +85,7 @@ html {
   .words {
     width: 100%;
     align-items: center;
+    text-align: center;
   }
 
   .explore {
@@ -78,6 +96,11 @@ html {
   .paragraph {
     padding-left: 4em;
     padding-right: 4em;
+  }
+
+  .promo {
+    animation-name: fadeIn, slideUp;
+    animation-duration: var(--anim-duration);
   }
 }
 

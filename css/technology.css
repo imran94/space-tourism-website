@@ -77,6 +77,16 @@ html {
   padding-right: 0;
 }
 
+.animate-image {
+  animation-name: fadeIn, slideLeft;
+  animation-duration: var(--anim-duration);
+}
+
+.animate-info {
+  animation-name: fadeIn, slideRight;
+  animation-duration: var(--anim-duration);
+}
+
 @media screen and (max-width: 1024px) {
   html {
     background-image: url(../assets/technology/background-technology-tablet.jpg);
@@ -132,6 +142,16 @@ html {
     width: 100%;
     margin: 0;
     padding: 0;
+  }
+
+  .animate-image {
+    animation-name: fadeIn, slideDown;
+    animation-duration: var(--anim-duration);
+  }
+
+  .animate-info {
+    animation-name: fadeIn, slideUp;
+    animation-duration: var(--anim-duration);
   }
 }
 

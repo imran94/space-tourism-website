@@ -21,6 +21,7 @@
       function Content() {
         return {
           isLoaded: false,
+          isVisible: true,
           selectedCrewMember: {
             name: "",
             images: {
@@ -72,6 +73,16 @@
             this.selectedCrewMember = this.data[0];
             this.isLoaded = true;
           },
+          setCrewMember(crewMember) {
+            if (this.selectedCrewMember === crewMember) return;
+
+            this.isVisible = false;
+            this.selectedCrewMember = crewMember;
+
+            setTimeout(() => {
+              this.isVisible = true;
+            }, 50);
+          },
         };
       }
       createApp({ Content }).mount();
@@ -119,8 +130,14 @@
       </div>
 
       <div class="content" :class="{ 'content-visible': isLoaded }">
-        <div class="crew-left">
-          <div class="crew-info">
+        <div class="crew-left animate-info">
+          <div
+            class="crew-info"
+            :class="{ 
+            'animate-info': isVisible, 
+            'invisible': !isVisible 
+          }"
+          >
             <div class="heading-s crew-role">{{ selectedCrewMember.role }}</div>
             <div class="heading-m crew-name">{{ selectedCrewMember.name }}</div>
             <div class="bio">{{ selectedCrewMember.bio }}</div>
@@ -132,11 +149,15 @@
               class="crew-selector clickable"
               :class="{'crew-selected': crewMember === selectedCrewMember}"
               :key="crewMember.name"
-              @click="selectedCrewMember = crewMember"
+              @click="setCrewMember(crewMember)"
             ></div>
           </div>
         </div>
-        <img class="crew-image" :src="selectedCrewMember.images.png" />
+        <img
+          class="crew-image"
+          :class="{ 'animate-image': isVisible, 'invisible': !isVisible }"
+          :src="selectedCrewMember.images.png"
+        />
       </div>
     </div>
   </body>
