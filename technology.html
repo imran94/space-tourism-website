@@ -69,10 +69,9 @@
 
             this.isVisible = false;
 
-            this.selectedTech = tech;
-            this.assignCorrectImage();
-
             setTimeout(() => {
+              this.selectedTech = tech;
+              this.assignCorrectImage();
               this.isVisible = true;
             }, 50);
           },

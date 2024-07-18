@@ -87,9 +87,9 @@
             if (dest === this.destination) return;
 
             this.isVisible = false;
-            this.destination = dest;
 
             setTimeout(() => {
+              this.destination = dest;
               this.isVisible = true;
             }, 50);
           },

@@ -77,11 +77,11 @@
             if (this.selectedCrewMember === crewMember) return;
 
             this.isVisible = false;
-            this.selectedCrewMember = crewMember;
 
             setTimeout(() => {
+              this.selectedCrewMember = crewMember;
               this.isVisible = true;
-            }, 50);
+            }, 200);
           },
         };
       }
