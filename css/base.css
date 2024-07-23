@@ -275,6 +275,14 @@ nav {
   display: flex;
 }
 
+.nav-divider {
+  width: 100%;
+  color: var(--medium-grey);
+  margin: 0 0 0 4em;
+  position: relative;
+  left: 20px;
+}
+
 @media screen and (min-width: 500px) {
   .nav-list {
     padding-right: 8em;
@@ -318,6 +326,10 @@ nav {
     padding-left: 0;
     margin-top: 0;
     /* column-gap: 2em; */
+  }
+
+  .nav-divider {
+    display: none;
   }
 
   .nav-list {
