@@ -29,6 +29,7 @@
   --anim-duration: 1s;
 }
 
+/* Animations */
 @keyframes slideLeft {
   from {
     translate: var(--slide-distance-width) 0;
